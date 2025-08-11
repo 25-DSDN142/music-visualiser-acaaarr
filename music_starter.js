@@ -1,7 +1,7 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(20)
+  background(255, 255, 255)
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
@@ -12,9 +12,12 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
  
 // changes 
    // vocal bar is red
-   fill(200, 0, 0);
+   // Map the 'vocal' value (0-100) to a color range (0-255)
+let vocalColor = map(vocal, 0, 100, 0, 255);
+
+   fill(vocalColor);
    rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-   fill(0);
+   fill(255, 255, 255);
    text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
  
    // drum bar is green
