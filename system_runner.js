@@ -1,4 +1,4 @@
-const canvasWidth = 540;
+const canvasWidth = 2000;
 const canvasHeight = 960;
 
 
