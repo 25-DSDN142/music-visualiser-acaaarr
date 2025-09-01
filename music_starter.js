@@ -43,7 +43,7 @@ let drumLines = int(map(drum, 0, 100, 1, 19)); // changing the range into a frac
 let bassColor = map(bass, 0, 100, 20, 20);
 let bassLines = int(map(bass, 0, 100, 1, 19)); // 1 to 19 lines based on drum
 for (let i = 0; i < bassLines; i++) {
-   let w = 1 + (bassLines + 1) * 10; // space lines out horizontally
+   let w = 1 + (bassLines + 1) * 6; // space lines out horizontally
    stroke(bassColor, 100, 100); // red color for bass
    fill(bassColor, 100, 100);
    square(1800, 800, 55);
@@ -51,7 +51,11 @@ for (let i = 0; i < bassLines; i++) {
    triangle(1827.5, 772.5, 1857.5+w, 800, 1827.5, 827.5);
    triangle(1827.5, 827.5, 1800, 857.5+w, 1772.5, 827.5);
    triangle(1772.5, 827.5, 1742.5-w, 800, 1772.5, 772.5);
-   line(w, 425, w, 475);
+   square(200, 200, 25);
+   triangle(172.5+15, 172.5+15, 200, 142.5+10+15-w, 227.5-15, 172.5+15);
+   triangle(227.5-15, 172.5+15, 257.5+w-15-10, 200, 227.5-15, 227.5-15);
+   triangle(227.5-15, 227.5-15, 200, 257.5-10-15+w, 172.5+15, 227.5-15);
+   triangle(172.5+15, 227.5-15, 142.5+10+15-w, 200, 172.5+15, 172.5+15);
 
 }
 
