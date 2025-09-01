@@ -45,6 +45,7 @@ let bassLines = int(map(bass, 0, 100, 1, 19)); // 1 to 19 lines based on drum
 for (let i = 0; i < bassLines; i++) {
    let w = 1 + (bassLines + 1) * 10; // space lines out horizontally
    stroke(bassColor, 100, 100); // red color for bass
+   fill(bassColor, 100, 100);
    square(1800, 800, 55);
    triangle(1772.5, 772.5, 1800, 742.5-w, 1827.5, 772.5);
    triangle(1827.5, 772.5, 1857.5+w, 800, 1827.5, 827.5);
