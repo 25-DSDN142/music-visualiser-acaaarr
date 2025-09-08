@@ -21,15 +21,23 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    // Map the 'vocal' value (0-100) to a color range (0-255)
 
 
-
-
-
 let vocalColor = map(vocal, 0, 100, 90, 90);
 let numLines = int(map(vocal, 0, 100, 1, 19)); // 1 to 10 lines based on vocal
 for (let i = 0; i <numLines; i++) {
    let x = 20 + i * 30; // space lines out horizontally
    stroke(vocalColor, 100, 100); // red color for vocal
-  line(x, 225, x, 275);
+  
+}
+
+let otherColor = map(other, 0, 100, 40, 40); // hue for green in HSB
+let otherShapes = int(map(other, 0, 100, 1, 10)); // 1 to 10 shapes based on 'other'
+line(30, 20, 85, 75);
+for (let i = 0; i < otherShapes; i++) {
+   let x = 50 + i * 40; // distance between circle sizes
+   stroke(otherColor, 100, 100);
+   fill(otherColor, 100, 100, 60); // semi-transparent
+   circle(300, 700, x);
+
 }
 
 let drumColor = map(drum, 0, 100, 50, 50);
@@ -63,7 +71,6 @@ let ellipseSize = int(map(vocal, 0, 100, 1, 10)); // 1 to 10 lines based on voca
 for (let i = 0; i <ellipseSize; i++) {//i respresents
    let u = 20 + i * 30; // space lines out horizontally
    stroke(vocalColor, 100, 100); // red color for vocal
-  ellipse(u,500 , u, u);
 
 }
 
