@@ -31,12 +31,15 @@ for (let i = 0; i <numLines; i++) {
 
 let otherColor = map(other, 0, 100, 40, 40); // hue for green in HSB
 let otherShapes = int(map(other, 0, 100, 1, 10)); // 1 to 10 shapes based on 'other'
-line(30, 20, 85, 75);
+line(300, 700, 300, 1000);
 for (let i = 0; i < otherShapes; i++) {
    let x = 50 + i * 40; // distance between circle sizes
    stroke(otherColor, 100, 100);
    fill(otherColor, 100, 100, 60); // semi-transparent
    circle(300, 700, x);
+   circle(500, 200, x);
+   circle(1500, 700, x);
+   circle(1800, 100, x);
 
 }
 
