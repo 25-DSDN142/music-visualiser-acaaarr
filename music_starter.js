@@ -1,43 +1,98 @@
 
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(20)
+  background(1, 23, 102);
   textFont('Verdana'); // please use CSS safe fonts
   rectMode(CENTER)
   textSize(24);
-  
+  strokeWeight (9);
+
+
+
    let bar_spacing = height / 10;
    let bar_height = width / 12;
    let bar_pos_x = width / 2;
  
 // changes 
    // vocal bar is red
-   fill(200, 0, 0);
-   rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-   fill(0);
-   text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-   // drum bar is green
-   fill(0, 200, 0);
-   rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-   fill(0);
-   text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-   // bass bar is blue
-   fill(50, 50, 240);
-   rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-   fill(0);
-   text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-   // other bar is white
-   fill(200, 200, 200);
-   rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-   fill(0);
-   text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-   fill(255, 255, 0);
- 
-   // display "words"
-   textAlign(CENTER);
-   textSize(vocal);
-   text(words, width/2, height/3);
+   // Map the 'vocal' value (0-100) to a color range (0-255)
+
+
+   let drumColor = map(drum, 0, 100, 50, 50);
+let drumLines = int(map(drum, 0, 100, 1, 19)); // changing the range into a fraction
+   let w = 800 - (drumLines - 10) * 30; // coding the drums height
+   stroke(47, 69, 150); 
+   fill(47, 69, 150);
+   rect(1000, 500, 1000, w); //w is the rectangle height, the problem is that I want a)
+   //the rectangle overall to START OFF TALLER, and then the height should change SLIGHTLY based on the drum volume
+
+
+let vocalColor = map(vocal, 0, 100, 90, 90);
+let numLines = int(map(vocal, 0, 100, 1, 19)); // 1 to 10 lines based on vocal
+for (let i = 0; i <numLines; i++) {
+   let x = 20 + i * 30; // space lines out horizontally
+   stroke(255, 145, 0); // red color for vocal
+  
 }
+
+let otherColor = map(other, 0, 100, 40, 40); // hue for green in HSB
+let otherShapes = int(map(other, 0, 100, 1, 10)); // 1 to 10 shapes based on 'other'
+stroke(128, 176, 255);
+line(300, 700, 300, 1000);
+line(500, 200, 500, 1000);
+line(1500, 700, 1500, 1000);
+line(1800, 100, 1800, 1000);
+for (let i = 0; i < otherShapes; i++) {
+   let x = 50 + i * 40; // distance between circle sizes
+   stroke(128, 176, 255);
+   fill(128, 176, 255, 60); // semi-transparent
+   circle(300, 700, x);
+   circle(500, 200, x);
+   circle(1500, 700, x);
+   circle(1800, 100, x);
+
+}
+
+
+let bassColor = map(bass, 0, 100, 20, 20);
+let bassLines = int(map(bass, 0, 100, 1, 19)); // 1 to 19 lines based on drum
+for (let i = 0; i < bassLines; i++) {
+   let w = 1 + (bassLines + 1) * 6; // space lines out horizontally
+   stroke(128, 176, 255); // red color for bass
+   fill(128, 176, 255);
+   square(1800, 800, 55);
+   triangle(1772.5, 772.5, 1800, 742.5-w, 1827.5, 772.5);
+   triangle(1827.5, 772.5, 1857.5+w, 800, 1827.5, 827.5);
+   triangle(1827.5, 827.5, 1800, 857.5+w, 1772.5, 827.5);
+   triangle(1772.5, 827.5, 1742.5-w, 800, 1772.5, 772.5);
+   square(200, 200, 25);
+   triangle(172.5+15, 172.5+15, 200, 142.5+10+15-w, 227.5-15, 172.5+15);
+   triangle(227.5-15, 172.5+15, 257.5+w-15-10, 200, 227.5-15, 227.5-15);
+   triangle(227.5-15, 227.5-15, 200, 257.5-10-15+w, 172.5+15, 227.5-15);
+   triangle(172.5+15, 227.5-15, 142.5+10+15-w, 200, 172.5+15, 172.5+15);
+
+}
+
+let ellipseSize = int(map(vocal, 0, 100, 1, 10)); // 1 to 10 lines based on vocal
+for (let i = 0; i <ellipseSize; i++) {//i respresents
+   let u = 20 + i * 30; // space lines out horizontally
+   stroke(128, 176, 255); // red color for vocal
+
+}
+
+let ellipseHeight = int(map(vocal, 0, 100, 1, 10)); // 1 to 10 lines based on vocal
+let h = 20 + (ellipseHeight - 1) * 30;
+noFill();
+stroke(128, 176, 255);
+strokeWeight (3);
+ellipse(1000, 500, 200, h);
+
+  filter(BLUR, 3);
+  fill(128, 176, 255); // black text
+  noStroke();
+  textAlign(CENTER, CENTER);
+  text(words, width / 2, height / 2);
+}
+
+
+   
